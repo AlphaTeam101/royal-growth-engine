@@ -1,7 +1,11 @@
-import { motion } from 'framer-motion';
-import { ArrowUp, Linkedin, Twitter, Instagram, Mail } from 'lucide-react';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
+import { ArrowUp, Linkedin, Twitter, Instagram, Mail, Sparkles } from 'lucide-react';
 
 const Footer = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -27,111 +31,197 @@ const Footer = () => {
     ],
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" as const },
+    },
+  };
+
   return (
-    <footer className="relative pt-20 pb-8 border-t border-border/30">
+    <footer ref={ref} className="relative pt-20 pb-8 border-t border-border/30 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-t from-secondary/30 to-transparent pointer-events-none" />
 
+      {/* Floating Orbs */}
+      <motion.div
+        className="absolute bottom-10 right-10 w-48 h-48 rounded-full opacity-10"
+        style={{ background: 'radial-gradient(circle, hsl(43 60% 52%) 0%, transparent 70%)' }}
+        animate={{ scale: [1, 1.2, 1], x: [0, 20, 0] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+      />
+
       <div className="section-container relative z-10">
         {/* Main Footer Content */}
-        <div className="grid md:grid-cols-4 gap-10 mb-16">
+        <motion.div
+          className="grid md:grid-cols-4 gap-10 mb-16"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
           {/* Brand */}
-          <div className="md:col-span-2">
+          <motion.div className="md:col-span-2" variants={itemVariants}>
             <motion.h2
-              className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 flex items-start gap-3"
             >
-              <span className="text-gradient-gold">نكست</span>
-              <br />
-              <span className="text-foreground">ليفل</span>
+              <motion.span
+                animate={{ rotate: [0, 10, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity }}
+              >
+                <Sparkles className="w-8 h-8 text-primary mt-2" />
+              </motion.span>
+              <span>
+                <span className="text-gradient-gold">نكست</span>
+                <br />
+                <span className="text-foreground">ليفل</span>
+              </span>
             </motion.h2>
             <p className="text-muted-foreground max-w-md mb-6 leading-relaxed">
               شريكك الموثوق في التحول الرقمي. نجمع بين الخبرة التقنية المصرية والفهم العميق للسوق السعودي.
             </p>
-            
+
             {/* Social Icons */}
             <div className="flex items-center gap-3">
-              {links.social.map((social) => (
+              {links.social.map((social, index) => (
                 <motion.a
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-11 h-11 rounded-full glass-card flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 transition-all duration-300"
-                  whileHover={{ scale: 1.1, y: -2 }}
+                  className="w-11 h-11 rounded-full glass-card flex items-center justify-center text-muted-foreground"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ delay: 0.3 + index * 0.1, duration: 0.4 }}
+                  whileHover={{
+                    scale: 1.15,
+                    y: -3,
+                    borderColor: 'hsl(43 60% 52% / 0.5)',
+                    color: 'hsl(43 60% 52%)',
+                    boxShadow: '0 0 20px hsl(43 60% 52% / 0.2)',
+                  }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <social.icon className="w-5 h-5" />
                 </motion.a>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Services Links */}
-          <div>
+          <motion.div variants={itemVariants}>
             <h3 className="text-lg font-bold text-foreground mb-5">خدماتنا</h3>
             <ul className="space-y-3">
-              {links.services.map((link) => (
-                <li key={link.label}>
-                  <a
+              {links.services.map((link, index) => (
+                <motion.li
+                  key={link.label}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.4 + index * 0.05, duration: 0.4 }}
+                >
+                  <motion.a
                     href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors animated-underline"
+                    className="text-muted-foreground hover:text-primary transition-colors animated-underline inline-block"
+                    whileHover={{ x: 5 }}
                   >
                     {link.label}
-                  </a>
-                </li>
+                  </motion.a>
+                </motion.li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Company Links */}
-          <div>
+          <motion.div variants={itemVariants}>
             <h3 className="text-lg font-bold text-foreground mb-5">الشركة</h3>
             <ul className="space-y-3">
-              {links.company.map((link) => (
-                <li key={link.label}>
-                  <a
+              {links.company.map((link, index) => (
+                <motion.li
+                  key={link.label}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.5 + index * 0.05, duration: 0.4 }}
+                >
+                  <motion.a
                     href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors animated-underline"
+                    className="text-muted-foreground hover:text-primary transition-colors animated-underline inline-block"
+                    whileHover={{ x: 5 }}
                   >
                     {link.label}
-                  </a>
-                </li>
+                  </motion.a>
+                </motion.li>
               ))}
             </ul>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Divider */}
-        <div className="h-px bg-border/50 mb-8" />
+        <motion.div
+          className="h-px mb-8"
+          style={{
+            background: 'linear-gradient(to right, transparent, hsl(43 60% 52% / 0.3), transparent)',
+          }}
+          initial={{ scaleX: 0 }}
+          animate={isInView ? { scaleX: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        />
 
         {/* Bottom Footer */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+        <motion.div
+          className="flex flex-col md:flex-row items-center justify-between gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.7 }}
+        >
           <p className="text-muted-foreground text-sm">
             © {new Date().getFullYear()} نكست ليفل. جميع الحقوق محفوظة.
           </p>
 
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <a href="#" className="hover:text-primary transition-colors">
+            <motion.a
+              href="#"
+              className="hover:text-primary transition-colors"
+              whileHover={{ y: -2 }}
+            >
               سياسة الخصوصية
-            </a>
-            <a href="#" className="hover:text-primary transition-colors">
+            </motion.a>
+            <motion.a
+              href="#"
+              className="hover:text-primary transition-colors"
+              whileHover={{ y: -2 }}
+            >
               الشروط والأحكام
-            </a>
+            </motion.a>
           </div>
 
           {/* Scroll to Top */}
           <motion.button
             onClick={scrollToTop}
-            className="w-11 h-11 rounded-full glass-card-gold flex items-center justify-center text-primary hover:gold-glow-sm transition-all duration-300"
-            whileHover={{ scale: 1.1, y: -2 }}
+            className="w-11 h-11 rounded-full glass-card-gold flex items-center justify-center text-primary relative overflow-hidden"
+            whileHover={{
+              scale: 1.15,
+              y: -3,
+              boxShadow: '0 0 30px hsl(43 60% 52% / 0.4)',
+            }}
             whileTap={{ scale: 0.95 }}
             aria-label="العودة للأعلى"
           >
-            <ArrowUp className="w-5 h-5" />
+            <motion.div
+              animate={{ y: [0, -3, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
+              <ArrowUp className="w-5 h-5" />
+            </motion.div>
           </motion.button>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );
