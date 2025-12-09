@@ -45,21 +45,103 @@ const Navbar = () => {
 
         <div className="section-container relative z-10">
           <div className="flex items-center justify-between">
-            {/* Logo */}
+            {/* Logo - Enhanced with more animations */}
             <motion.a
               href="#"
-              className="text-2xl font-extrabold flex items-center gap-2"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
+              className="text-2xl font-extrabold flex items-center gap-2 relative group"
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
             >
+              {/* Glow effect on hover */}
+              <motion.div
+                className="absolute -inset-4 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{
+                  background: 'radial-gradient(circle, hsl(43 60% 52% / 0.15) 0%, transparent 70%)',
+                }}
+              />
+
+              {/* Sparkle icon with elaborate animation */}
               <motion.span
-                animate={{ rotate: [0, 5, -5, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
+                className="relative"
+                animate={{
+                  rotate: [0, 15, -15, 0],
+                  scale: [1, 1.2, 1],
+                }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                whileHover={{
+                  rotate: 360,
+                  scale: 1.3,
+                  transition: { duration: 0.5 }
+                }}
               >
-                <Sparkles className="w-5 h-5 text-primary" />
+                <Sparkles className="w-6 h-6 text-primary" />
+                {/* Sparkle glow */}
+                <motion.div
+                  className="absolute inset-0 rounded-full"
+                  animate={{
+                    boxShadow: [
+                      '0 0 10px hsl(43 60% 52% / 0.3)',
+                      '0 0 25px hsl(43 60% 52% / 0.6)',
+                      '0 0 10px hsl(43 60% 52% / 0.3)',
+                    ],
+                  }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                />
               </motion.span>
-              <span className="text-gradient-gold">نكست</span>
-              <span className="text-foreground">ليفل</span>
+
+              {/* Logo text with individual letter animations */}
+              <motion.span
+                className="text-gradient-gold relative"
+                whileHover={{
+                  textShadow: '0 0 20px hsl(43 60% 52% / 0.8)',
+                }}
+              >
+                <motion.span
+                  className="inline-block"
+                  animate={{ y: [0, -2, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: 0 }}
+                >
+                  ن
+                </motion.span>
+                <motion.span
+                  className="inline-block"
+                  animate={{ y: [0, -2, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: 0.1 }}
+                >
+                  ك
+                </motion.span>
+                <motion.span
+                  className="inline-block"
+                  animate={{ y: [0, -2, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: 0.2 }}
+                >
+                  س
+                </motion.span>
+                <motion.span
+                  className="inline-block"
+                  animate={{ y: [0, -2, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}
+                >
+                  ت
+                </motion.span>
+              </motion.span>
+              <motion.span
+                className="text-foreground"
+                whileHover={{
+                  color: 'hsl(43 60% 70%)',
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                ليفل
+              </motion.span>
+
+              {/* Animated underline on hover */}
+              <motion.div
+                className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent origin-center"
+                initial={{ scaleX: 0 }}
+                whileHover={{ scaleX: 1 }}
+                transition={{ duration: 0.3 }}
+              />
             </motion.a>
 
             {/* Desktop Navigation */}
