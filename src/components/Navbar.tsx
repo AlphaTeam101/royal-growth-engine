@@ -45,91 +45,62 @@ const Navbar = () => {
 
         <div className="section-container relative z-10">
           <div className="flex items-center justify-between">
-            {/* Logo - Enhanced with more animations */}
+            {/* Logo - Enhanced with animations */}
             <motion.a
               href="#"
               className="text-2xl font-extrabold flex items-center gap-2 relative group"
-              whileHover={{ scale: 1.08 }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               {/* Glow effect on hover */}
               <motion.div
                 className="absolute -inset-4 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 style={{
-                  background: 'radial-gradient(circle, hsl(43 60% 52% / 0.15) 0%, transparent 70%)',
+                  background: 'radial-gradient(circle, hsl(43 60% 52% / 0.2) 0%, transparent 70%)',
                 }}
               />
 
-              {/* Sparkle icon with elaborate animation */}
+              {/* Sparkle icon with animation */}
               <motion.span
-                className="relative"
+                className="relative z-10"
                 animate={{
-                  rotate: [0, 15, -15, 0],
-                  scale: [1, 1.2, 1],
+                  rotate: [0, 10, -10, 0],
+                  scale: [1, 1.1, 1],
                 }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                whileHover={{
-                  rotate: 360,
-                  scale: 1.3,
-                  transition: { duration: 0.5 }
-                }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               >
                 <Sparkles className="w-6 h-6 text-primary" />
                 {/* Sparkle glow */}
                 <motion.div
-                  className="absolute inset-0 rounded-full"
+                  className="absolute inset-0 rounded-full pointer-events-none"
                   animate={{
                     boxShadow: [
-                      '0 0 10px hsl(43 60% 52% / 0.3)',
-                      '0 0 25px hsl(43 60% 52% / 0.6)',
-                      '0 0 10px hsl(43 60% 52% / 0.3)',
+                      '0 0 8px hsl(43 60% 52% / 0.3)',
+                      '0 0 20px hsl(43 60% 52% / 0.5)',
+                      '0 0 8px hsl(43 60% 52% / 0.3)',
                     ],
                   }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
+                  transition={{ duration: 2, repeat: Infinity }}
                 />
               </motion.span>
 
-              {/* Logo text with individual letter animations */}
+              {/* Logo text - simplified for visibility */}
               <motion.span
-                className="text-gradient-gold relative"
-                whileHover={{
-                  textShadow: '0 0 20px hsl(43 60% 52% / 0.8)',
+                className="text-gradient-gold relative z-10"
+                animate={{
+                  textShadow: [
+                    '0 0 0px transparent',
+                    '0 0 8px hsl(43 60% 52% / 0.3)',
+                    '0 0 0px transparent',
+                  ],
                 }}
+                transition={{ duration: 2.5, repeat: Infinity }}
               >
-                <motion.span
-                  className="inline-block"
-                  animate={{ y: [0, -2, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, delay: 0 }}
-                >
-                  ن
-                </motion.span>
-                <motion.span
-                  className="inline-block"
-                  animate={{ y: [0, -2, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, delay: 0.1 }}
-                >
-                  ك
-                </motion.span>
-                <motion.span
-                  className="inline-block"
-                  animate={{ y: [0, -2, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, delay: 0.2 }}
-                >
-                  س
-                </motion.span>
-                <motion.span
-                  className="inline-block"
-                  animate={{ y: [0, -2, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}
-                >
-                  ت
-                </motion.span>
+                نكست
               </motion.span>
               <motion.span
-                className="text-foreground"
-                whileHover={{
-                  color: 'hsl(43 60% 70%)',
-                }}
+                className="text-foreground relative z-10"
+                whileHover={{ color: 'hsl(43 60% 70%)' }}
                 transition={{ duration: 0.3 }}
               >
                 ليفل
@@ -137,10 +108,7 @@ const Navbar = () => {
 
               {/* Animated underline on hover */}
               <motion.div
-                className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent origin-center"
-                initial={{ scaleX: 0 }}
-                whileHover={{ scaleX: 1 }}
-                transition={{ duration: 0.3 }}
+                className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
               />
             </motion.a>
 

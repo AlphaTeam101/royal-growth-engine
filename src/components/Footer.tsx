@@ -69,58 +69,52 @@ const Footer = () => {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          {/* Brand - Enhanced with more animations */}
+          {/* Brand - Enhanced with animations */}
           <motion.div className="md:col-span-2" variants={itemVariants}>
             <motion.h2
               className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 flex items-start gap-3 group"
-              whileHover={{ scale: 1.02 }}
             >
-              {/* Sparkle with elaborate animation */}
+              {/* Sparkle with animation */}
               <motion.span
                 className="relative"
                 animate={{
-                  rotate: [0, 15, -15, 0],
-                  scale: [1, 1.15, 1],
+                  rotate: [0, 10, -10, 0],
+                  scale: [1, 1.1, 1],
                 }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               >
                 <Sparkles className="w-8 h-8 text-primary mt-2" />
                 {/* Sparkle glow */}
                 <motion.div
-                  className="absolute inset-0 rounded-full"
+                  className="absolute inset-0 rounded-full pointer-events-none"
                   animate={{
                     boxShadow: [
-                      '0 0 10px hsl(43 60% 52% / 0.3)',
-                      '0 0 30px hsl(43 60% 52% / 0.5)',
-                      '0 0 10px hsl(43 60% 52% / 0.3)',
+                      '0 0 8px hsl(43 60% 52% / 0.3)',
+                      '0 0 25px hsl(43 60% 52% / 0.5)',
+                      '0 0 8px hsl(43 60% 52% / 0.3)',
                     ],
                   }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
+                  transition={{ duration: 2, repeat: Infinity }}
                 />
               </motion.span>
               <span>
-                {/* Letter-by-letter wave animation for نكست */}
-                <motion.span className="text-gradient-gold inline-block">
-                  {'نكست'.split('').map((letter, i) => (
-                    <motion.span
-                      key={i}
-                      className="inline-block"
-                      animate={{ y: [0, -4, 0] }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: i * 0.15,
-                        ease: "easeInOut"
-                      }}
-                    >
-                      {letter}
-                    </motion.span>
-                  ))}
+                {/* Logo text - simplified for visibility */}
+                <motion.span
+                  className="text-gradient-gold"
+                  animate={{
+                    textShadow: [
+                      '0 0 0px transparent',
+                      '0 0 10px hsl(43 60% 52% / 0.3)',
+                      '0 0 0px transparent',
+                    ],
+                  }}
+                  transition={{ duration: 2.5, repeat: Infinity }}
+                >
+                  نكست
                 </motion.span>
                 <br />
-                {/* Second part with hover effect */}
                 <motion.span
-                  className="text-foreground inline-block"
+                  className="text-foreground"
                   whileHover={{ color: 'hsl(43 60% 70%)' }}
                   transition={{ duration: 0.3 }}
                 >
