@@ -55,7 +55,7 @@ const features = [
   {
     icon: Users,
     title: 'فريق متكامل ومتخصص',
-    description: 'نجمع بين مهندسين مصريين بخبرة عالمية ومسوقين سعوديين يفهمون السوق المحلي لتقديم حلول شاملة.',
+    description: 'فريق عمل محترف يعمل بمعايير عالمية ويفهم السوق المحلي لتقديم حلول شاملة.',
     highlights: ['مطورون محترفون', 'مصممون مبدعون', 'مسوقون خبراء'],
   },
   {
@@ -110,45 +110,28 @@ const WhyUs = () => {
       {/* Background Elements - Enhanced */}
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 via-transparent to-secondary/30" />
 
-      {/* Animated Background Orbs - More dynamic */}
-      <motion.div
+      {/* Static Background Orbs for performance */}
+      <div
         className="absolute top-20 right-10 w-[500px] h-[500px] rounded-full opacity-15"
         style={{ background: 'radial-gradient(circle, hsl(43 60% 52%) 0%, transparent 60%)' }}
-        animate={{ scale: [1, 1.4, 1], x: [0, 50, 0], y: [0, -30, 0] }}
-        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
       />
-      <motion.div
+      <div
         className="absolute bottom-20 left-10 w-[400px] h-[400px] rounded-full opacity-15"
         style={{ background: 'radial-gradient(circle, hsl(216 50% 30%) 0%, transparent 60%)' }}
-        animate={{ scale: [1.4, 1, 1.4], x: [0, -40, 0], y: [0, 40, 0] }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
       />
-      <motion.div
+      <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-10"
         style={{ background: 'radial-gradient(circle, hsl(43 70% 55%) 0%, transparent 50%)' }}
-        animate={{ scale: [1, 1.2, 1], rotate: [0, 180, 360] }}
-        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
       />
 
-      {/* Floating Particles */}
+      {/* Static Particles for performance */}
       {[...Array(6)].map((_, i) => (
-        <motion.div
+        <div
           key={i}
           className="absolute w-3 h-3 rounded-full bg-primary/30"
           style={{
             left: `${10 + i * 18}%`,
             top: `${15 + (i % 2) * 70}%`,
-          }}
-          animate={{
-            y: [0, -40, 0],
-            opacity: [0.2, 0.6, 0.2],
-            scale: [1, 1.5, 1],
-          }}
-          transition={{
-            duration: 5 + i * 0.5,
-            repeat: Infinity,
-            delay: i * 0.4,
-            ease: "easeInOut",
           }}
         />
       ))}
@@ -188,19 +171,9 @@ const WhyUs = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             الشراكة التي{' '}
-            <motion.span
-              className="text-gradient-gold inline-block"
-              animate={{
-                textShadow: [
-                  '0 0 20px hsl(43 60% 52% / 0.3)',
-                  '0 0 40px hsl(43 60% 52% / 0.6)',
-                  '0 0 20px hsl(43 60% 52% / 0.3)',
-                ],
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
+            <span className="text-gradient-gold">
               تصنع الفرق
-            </motion.span>
+            </span>
           </motion.h2>
           <motion.p
             className="text-muted-foreground text-lg max-w-3xl mx-auto leading-relaxed"
@@ -208,9 +181,9 @@ const WhyUs = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            نجمع بين الخبرة التقنية المصرية العالمية والفهم العميق للسوق السعودي والخليجي
+            نجمع بين الخبرة التقنية العميقة وفهم السوق المحلي لنقدم حلولاً متكاملة
             <br />
-            <span className="text-primary font-semibold">لنقدم لك حلولاً متكاملة تحقق أهدافك</span>
+            <span className="text-primary font-semibold">لنحقق لك أهدافك بكفاءة واحترافية</span>
           </motion.p>
         </motion.div>
 
@@ -281,59 +254,37 @@ const WhyUs = () => {
           ))}
         </motion.div>
 
-        {/* Partnership Visual - Enhanced */}
+        {/* Unified Value Proposition - No Flags */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.4 }}
           className="glass-card-gold p-8 md:p-12 mb-16 relative overflow-hidden"
         >
-          {/* Animated border glow */}
-          <motion.div
-            className="absolute inset-0 rounded-2xl"
-            style={{
-              background: 'linear-gradient(90deg, hsl(43 60% 52% / 0) 0%, hsl(43 60% 52% / 0.3) 50%, hsl(43 60% 52% / 0) 100%)',
-              backgroundSize: '200% 100%',
-            }}
-            animate={{ backgroundPosition: ['0% 0%', '200% 0%'] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-          />
+          <div className="text-center mb-8">
+            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+              معايير عالمية برؤية محلية
+            </h3>
+            <p className="text-muted-foreground">فريق عمل محترف ملتزم بأعلى معايير الجودة</p>
+          </div>
 
           <div className="relative z-10 grid md:grid-cols-3 gap-8 items-center">
-            {/* Egypt */}
+            {/* Technical Excellence */}
             <motion.div
               className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.5 }}
               whileHover={{ scale: 1.05 }}
             >
-              <motion.div
-                className="w-28 h-28 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center relative"
-                animate={{
-                  y: [0, -15, 0],
-                  boxShadow: [
-                    '0 0 0px hsl(43 60% 52% / 0)',
-                    '0 0 40px hsl(43 60% 52% / 0.4)',
-                    '0 0 0px hsl(43 60% 52% / 0)',
-                  ],
-                }}
-                transition={{ duration: 3, repeat: Infinity }}
+              <div
+                className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center"
               >
-                <motion.span
-                  className="text-5xl"
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  🇪🇬
-                </motion.span>
-                {/* Orbiting ring */}
-                <motion.div
-                  className="absolute inset-0 rounded-full border-2 border-primary/30"
-                  animate={{ rotate: 360, scale: [1, 1.1, 1] }}
-                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                />
-              </motion.div>
-              <h3 className="text-xl font-bold text-foreground mb-2">الخبرة التقنية المصرية</h3>
+                <Rocket className="w-10 h-10 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold text-foreground mb-2">تميز تقني</h3>
               <p className="text-muted-foreground text-sm mb-3">
-                مهندسون بخبرة عالمية في أحدث التقنيات
+                أحدث التقنيات وأفضل الممارسات
               </p>
               <div className="flex flex-wrap justify-center gap-2">
                 {['React', 'Flutter', 'Node.js'].map((tech, i) => (
@@ -343,7 +294,6 @@ const WhyUs = () => {
                     initial={{ opacity: 0, scale: 0 }}
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ delay: 0.8 + i * 0.1 }}
-                    whileHover={{ scale: 1.1 }}
                   >
                     {tech}
                   </motion.span>
@@ -351,87 +301,46 @@ const WhyUs = () => {
               </div>
             </motion.div>
 
-            {/* Connection - Enhanced */}
+            {/* Connection - Simplified */}
             <div className="flex justify-center">
-              <motion.div className="flex items-center gap-4">
-                <motion.div
-                  className="hidden md:block w-20 h-1 rounded-full"
+              <div className="flex items-center gap-4">
+                <div
+                  className="hidden md:block w-16 h-1 rounded-full"
                   style={{
                     background: 'linear-gradient(to right, hsl(43 60% 52% / 0.2), hsl(43 60% 52%))',
                   }}
-                  animate={{ opacity: [0.5, 1, 0.5] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
                 />
-                <motion.div
-                  className="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center relative"
-                  animate={{
-                    boxShadow: [
-                      '0 0 30px hsl(43 60% 52% / 0.4)',
-                      '0 0 60px hsl(43 60% 52% / 0.7)',
-                      '0 0 30px hsl(43 60% 52% / 0.4)',
-                    ],
-                    scale: [1, 1.1, 1],
-                  }}
-                  transition={{ duration: 2, repeat: Infinity }}
+                <div
+                  className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center"
+                  style={{ boxShadow: '0 0 40px hsl(43 60% 52% / 0.5)' }}
                 >
-                  <Zap className="w-10 h-10 text-primary-foreground" />
-                  {/* Pulse rings */}
-                  <motion.div
-                    className="absolute inset-0 rounded-full border-2 border-primary"
-                    animate={{ scale: [1, 2], opacity: [0.8, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  />
-                  <motion.div
-                    className="absolute inset-0 rounded-full border-2 border-primary"
-                    animate={{ scale: [1, 2], opacity: [0.8, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-                  />
-                </motion.div>
-                <motion.div
-                  className="hidden md:block w-20 h-1 rounded-full"
+                  <Zap className="w-8 h-8 text-primary-foreground" />
+                </div>
+                <div
+                  className="hidden md:block w-16 h-1 rounded-full"
                   style={{
                     background: 'linear-gradient(to left, hsl(43 60% 52% / 0.2), hsl(43 60% 52%))',
                   }}
-                  animate={{ opacity: [0.5, 1, 0.5] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
                 />
-              </motion.div>
+              </div>
             </div>
 
-            {/* Saudi */}
+            {/* Market Understanding */}
             <motion.div
               className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.6 }}
               whileHover={{ scale: 1.05 }}
             >
-              <motion.div
-                className="w-28 h-28 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center relative"
-                animate={{
-                  y: [0, -15, 0],
-                  boxShadow: [
-                    '0 0 0px hsl(43 60% 52% / 0)',
-                    '0 0 40px hsl(43 60% 52% / 0.4)',
-                    '0 0 0px hsl(43 60% 52% / 0)',
-                  ],
-                }}
-                transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
+              <div
+                className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center"
               >
-                <motion.span
-                  className="text-5xl"
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-                >
-                  🇸🇦
-                </motion.span>
-                {/* Orbiting ring */}
-                <motion.div
-                  className="absolute inset-0 rounded-full border-2 border-primary/30"
-                  animate={{ rotate: -360, scale: [1, 1.1, 1] }}
-                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                />
-              </motion.div>
-              <h3 className="text-xl font-bold text-foreground mb-2">فهم السوق السعودي</h3>
+                <Target className="w-10 h-10 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold text-foreground mb-2">فهم السوق المحلي</h3>
               <p className="text-muted-foreground text-sm mb-3">
-                خبراء محليون يعرفون كيف يصلون للعملاء
+                خبراء يعرفون كيف يصلون للعملاء
               </p>
               <div className="flex flex-wrap justify-center gap-2">
                 {['SEO', 'Ads', 'Strategy'].map((skill, i) => (
@@ -441,7 +350,6 @@ const WhyUs = () => {
                     initial={{ opacity: 0, scale: 0 }}
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ delay: 0.9 + i * 0.1 }}
-                    whileHover={{ scale: 1.1 }}
                   >
                     {skill}
                   </motion.span>

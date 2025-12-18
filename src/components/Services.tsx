@@ -145,7 +145,7 @@ const Services = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            نجمع بين التميز التقني في مصر والفهم العميق للسوق السعودي والخليجي
+            نجمع بين الخبرة التقنية العميقة وفهم السوق المحلي لنقدم حلولاً متكاملة
           </motion.p>
 
           {/* Service Categories Pills - New */}
@@ -319,7 +319,7 @@ const Services = () => {
                 <motion.div
                   className="flex flex-wrap gap-2 mt-6"
                   initial={{ opacity: 0 }}
-                  animate={{ opacity: hoveredCard === 'egypt' ? 1 : 0.7 }}
+                  animate={{ opacity: hoveredCard === 'core' ? 1 : 0.7 }}
                 >
                   {['React', 'Flutter', 'Node.js', 'AWS', '.NET'].map((tech, i) => (
                     <motion.span
