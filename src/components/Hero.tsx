@@ -32,8 +32,7 @@ const Hero = () => {
       rotate: [-3, 3, -3],
       transition: {
         duration: 6,
-        repeat: Infinity,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
       },
     },
   };
@@ -44,10 +43,16 @@ const Hero = () => {
       opacity: [0.3, 0.6, 0.3],
       transition: {
         duration: 3,
-        repeat: Infinity,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
       },
     },
+  };
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.querySelector(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const features = [
@@ -277,7 +282,7 @@ const Hero = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 1.2 }}
             >
-              نجمع بين الخبرة التقنية المصرية العالمية والفهم العميق للسوق السعودي والخليجي
+              فريق سعودي متخصص يعمل بمعايير عالمية لخدمة السوق السعودي والخليجي
               <br />
               <span className="text-primary font-semibold">لنحقق لك نتائج استثنائية تتجاوز التوقعات</span>
             </motion.p>
@@ -319,38 +324,27 @@ const Hero = () => {
           >
             <motion.button
               className="btn-gold flex items-center gap-3 group relative overflow-hidden text-lg px-10 py-5"
+              onClick={() => scrollToSection('#contact')}
               whileHover={{
                 scale: 1.08,
                 boxShadow: '0 0 50px hsl(43 60% 52% / 0.6), 0 0 100px hsl(43 60% 52% / 0.3)',
               }}
               whileTap={{ scale: 0.95 }}
-              animate={{
-                boxShadow: [
-                  '0 0 20px hsl(43 60% 52% / 0.3)',
-                  '0 0 40px hsl(43 60% 52% / 0.5)',
-                  '0 0 20px hsl(43 60% 52% / 0.3)',
-                ],
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
             >
               {/* Shimmer effect */}
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
                 initial={{ x: '-100%' }}
-                animate={{ x: ['100%', '-100%'] }}
-                transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
+                whileHover={{ x: '100%' }}
+                transition={{ duration: 0.6 }}
               />
               <span className="relative z-10 font-bold">ابدأ مشروعك الآن</span>
-              <motion.div
-                animate={{ x: [0, -5, 0] }}
-                transition={{ duration: 1, repeat: Infinity }}
-              >
-                <ArrowLeft className="w-6 h-6 relative z-10" />
-              </motion.div>
+              <ArrowLeft className="w-6 h-6 relative z-10" />
             </motion.button>
 
             <motion.button
               className="btn-glass flex items-center gap-3 group text-lg px-8 py-5"
+              onClick={() => scrollToSection('#portfolio')}
               whileHover={{
                 scale: 1.05,
                 borderColor: 'hsl(43 60% 52% / 0.7)',
@@ -358,18 +352,7 @@ const Hero = () => {
               }}
               whileTap={{ scale: 0.95 }}
             >
-              <motion.div
-                className="relative"
-                animate={{ scale: [1, 1.3, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                <Play className="w-6 h-6 fill-primary text-primary" />
-                <motion.div
-                  className="absolute inset-0 rounded-full border-2 border-primary"
-                  animate={{ scale: [1, 1.8], opacity: [0.8, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                />
-              </motion.div>
+              <Play className="w-6 h-6 fill-primary text-primary" />
               شاهد أعمالنا
             </motion.button>
           </motion.div>

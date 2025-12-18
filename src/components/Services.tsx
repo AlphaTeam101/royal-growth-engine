@@ -26,7 +26,7 @@ const Services = () => {
     },
   };
 
-  const egyptServices = [
+  const coreServices = [
     { icon: Smartphone, title: 'تطبيقات الموبايل', desc: 'iOS & Android', detail: 'تطبيقات عالية الأداء بتجربة مستخدم استثنائية' },
     { icon: Code, title: 'تطوير الويب', desc: 'React & Next.js', detail: 'مواقع وتطبيقات ويب حديثة وسريعة' },
     { icon: Server, title: 'البنية التحتية', desc: 'Cloud & DevOps', detail: 'حلول سحابية قابلة للتوسع والنمو' },
@@ -38,7 +38,7 @@ const Services = () => {
     { icon: BarChart3, title: 'تحليل البيانات', desc: 'قرارات ذكية', detail: 'تحليلات عميقة لاتخاذ قرارات مدروسة' },
   ];
 
-  const allServices = [...egyptServices, ...saudiServices];
+  const allServices = [...coreServices, ...saudiServices];
 
   return (
     <section ref={ref} id="services" className="py-24 md:py-32 relative overflow-hidden">
@@ -182,30 +182,30 @@ const Services = () => {
           animate={isInView ? "visible" : "hidden"}
           className="grid lg:grid-cols-5 gap-8 items-stretch"
         >
-          {/* Egypt Side - The Engine */}
+          {/* In-House Team - Core Services */}
           <motion.div
             variants={itemVariants}
             className="lg:col-span-2 group"
-            onMouseEnter={() => setHoveredCard('egypt')}
+            onMouseEnter={() => setHoveredCard('core')}
             onMouseLeave={() => setHoveredCard(null)}
           >
             <motion.div
               className="glass-card-gold p-8 md:p-10 h-full relative overflow-hidden"
               animate={{
-                boxShadow: hoveredCard === 'egypt'
+                boxShadow: hoveredCard === 'core'
                   ? '0 0 60px hsl(43 60% 52% / 0.3), 0 0 120px hsl(43 60% 52% / 0.15)'
                   : '0 8px 32px hsl(216 50% 5% / 0.5)',
-                borderColor: hoveredCard === 'egypt'
+                borderColor: hoveredCard === 'core'
                   ? 'hsl(43 60% 52% / 0.6)'
                   : 'hsl(43 60% 52% / 0.2)',
-                scale: hoveredCard === 'egypt' ? 1.02 : 1,
+                scale: hoveredCard === 'core' ? 1.02 : 1,
               }}
               transition={{ duration: 0.4 }}
             >
               {/* Animated gradient overlay */}
               <motion.div
                 className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent"
-                animate={{ opacity: hoveredCard === 'egypt' ? 1 : 0 }}
+                animate={{ opacity: hoveredCard === 'core' ? 1 : 0 }}
                 transition={{ duration: 0.3 }}
               />
 
@@ -215,7 +215,7 @@ const Services = () => {
                 style={{
                   background: 'linear-gradient(90deg, transparent, hsl(43 60% 52%), transparent)',
                 }}
-                animate={{ scaleX: hoveredCard === 'egypt' ? 1 : 0 }}
+                animate={{ scaleX: hoveredCard === 'core' ? 1 : 0 }}
                 transition={{ duration: 0.4 }}
               />
 
@@ -224,26 +224,20 @@ const Services = () => {
                   <motion.div
                     className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center relative"
                     animate={{
-                      boxShadow: hoveredCard === 'egypt' ? '0 0 30px hsl(43 60% 52% / 0.4)' : '0 0 0px transparent',
-                      scale: hoveredCard === 'egypt' ? 1.1 : 1,
+                      boxShadow: hoveredCard === 'core' ? '0 0 30px hsl(43 60% 52% / 0.4)' : '0 0 0px transparent',
+                      scale: hoveredCard === 'core' ? 1.1 : 1,
                     }}
                     transition={{ duration: 0.3 }}
                   >
                     <Code className="w-8 h-8 text-primary" />
-                    {/* Orbiting ring */}
-                    <motion.div
-                      className="absolute inset-0 rounded-2xl border border-primary/30"
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                    />
                   </motion.div>
                   <div>
                     <motion.div
                       className="flex items-center gap-2"
-                      animate={{ x: hoveredCard === 'egypt' ? 5 : 0 }}
+                      animate={{ x: hoveredCard === 'core' ? 5 : 0 }}
                     >
-                      <span className="text-3xl">🇪🇬</span>
-                      <span className="text-xs text-muted-foreground">فريق مصر</span>
+                      <span className="text-3xl">🇸🇦</span>
+                      <span className="text-xs text-muted-foreground">فريقنا المتخصص</span>
                     </motion.div>
                     <h3 className="text-2xl font-bold text-foreground">المحرك التقني</h3>
                   </div>
@@ -252,20 +246,20 @@ const Services = () => {
                 <motion.h4
                   className="heading-md text-primary mb-4"
                   animate={{
-                    textShadow: hoveredCard === 'egypt'
+                    textShadow: hoveredCard === 'core'
                       ? '0 0 20px hsl(43 60% 52% / 0.5)'
                       : '0 0 0px transparent',
                   }}
                 >
-                  هندسة برمجية عالمية
+                  هندسة برمجية بمعايير عالمية
                 </motion.h4>
 
                 <p className="text-muted-foreground mb-8 leading-relaxed">
-                  فريق من أفضل المهندسين المصريين يبني حلولاً تقنية قابلة للتوسع بأعلى معايير الجودة العالمية
+                  فريق متخصص يبني حلولاً تقنية قابلة للتوسع بأعلى معايير الجودة العالمية
                 </p>
 
                 <div className="space-y-4">
-                  {egyptServices.map((service, index) => (
+                  {coreServices.map((service, index) => (
                     <motion.div
                       key={service.title}
                       className="p-4 rounded-xl bg-background/50 border border-border/50 relative overflow-hidden group/service"
@@ -379,23 +373,14 @@ const Services = () => {
               <div className="text-center space-y-2">
                 <motion.p
                   className="text-primary font-bold text-lg"
-                  animate={{ opacity: [0.7, 1, 0.7] }}
-                  transition={{ duration: 2, repeat: Infinity }}
                 >
-                  نبني في مصر
+                  نبني بمعايير عالمية
                 </motion.p>
-                <motion.div
-                  animate={{ y: [0, 5, 0], opacity: [0.5, 1, 0.5] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                >
-                  <TrendingUp className="w-6 h-6 text-primary mx-auto rotate-90" />
-                </motion.div>
+                <TrendingUp className="w-6 h-6 text-primary mx-auto rotate-90" />
                 <motion.p
                   className="text-primary font-bold text-lg"
-                  animate={{ opacity: [1, 0.7, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
                 >
-                  ننمي في السعودية
+                  وننمي أعمالك
                 </motion.p>
               </div>
 
@@ -580,8 +565,9 @@ const Services = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 1 }}
         >
-          <motion.button
-            className="btn-gold text-lg px-10 py-5 group relative overflow-hidden"
+          <motion.a
+            href="#contact"
+            className="btn-gold text-lg px-10 py-5 group relative overflow-hidden inline-flex items-center gap-2"
             whileHover={{
               scale: 1.05,
               boxShadow: '0 0 50px hsl(43 60% 52% / 0.5)',
@@ -595,14 +581,8 @@ const Services = () => {
               transition={{ duration: 0.6 }}
             />
             <span className="relative z-10 font-bold">اطلب استشارة مجانية</span>
-            <motion.span
-              className="inline-block mr-2 relative z-10"
-              animate={{ x: [0, -5, 0] }}
-              transition={{ duration: 1, repeat: Infinity }}
-            >
-              <ArrowLeft className="w-5 h-5 inline" />
-            </motion.span>
-          </motion.button>
+            <ArrowLeft className="w-5 h-5 relative z-10" />
+          </motion.a>
         </motion.div>
       </div>
     </section>

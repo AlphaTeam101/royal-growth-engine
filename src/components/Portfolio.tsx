@@ -112,45 +112,28 @@ const Portfolio = () => {
       {/* Background Effects - Enhanced */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-secondary/30 to-transparent" />
 
-      {/* Floating Orbs - More dynamic */}
-      <motion.div
+      {/* Floating Orbs - Static backgrounds for performance */}
+      <div
         className="absolute top-20 right-20 w-[400px] h-[400px] rounded-full opacity-15"
         style={{ background: 'radial-gradient(circle, hsl(43 60% 52%) 0%, transparent 60%)' }}
-        animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.2, 0.1], x: [0, 40, 0] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
       />
-      <motion.div
+      <div
         className="absolute bottom-20 left-20 w-[500px] h-[500px] rounded-full opacity-15"
         style={{ background: 'radial-gradient(circle, hsl(43 60% 52%) 0%, transparent 60%)' }}
-        animate={{ scale: [1.3, 1, 1.3], opacity: [0.1, 0.25, 0.1], x: [0, -40, 0] }}
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
       />
-      <motion.div
+      <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-10"
         style={{ background: 'radial-gradient(circle, hsl(216 50% 30%) 0%, transparent 50%)' }}
-        animate={{ scale: [1, 1.2, 1], rotate: [0, 180, 360] }}
-        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
       />
 
-      {/* Floating Particles */}
+      {/* Static Particles for performance */}
       {[...Array(10)].map((_, i) => (
-        <motion.div
+        <div
           key={i}
-          className="absolute w-2 h-2 rounded-full bg-primary/40"
+          className="absolute w-2 h-2 rounded-full bg-primary/30"
           style={{
             left: `${8 + i * 10}%`,
             top: `${10 + (i % 4) * 25}%`,
-          }}
-          animate={{
-            y: [0, -40, 0],
-            opacity: [0.2, 0.7, 0.2],
-            scale: [1, 1.8, 1],
-          }}
-          transition={{
-            duration: 4 + i * 0.4,
-            repeat: Infinity,
-            delay: i * 0.25,
-            ease: "easeInOut",
           }}
         />
       ))}
@@ -190,19 +173,9 @@ const Portfolio = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             مشاريع{' '}
-            <motion.span
-              className="text-gradient-gold inline-block"
-              animate={{
-                textShadow: [
-                  '0 0 20px hsl(43 60% 52% / 0.3)',
-                  '0 0 40px hsl(43 60% 52% / 0.6)',
-                  '0 0 20px hsl(43 60% 52% / 0.3)',
-                ],
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
+            <span className="text-gradient-gold">
               صنعت الفرق
-            </motion.span>
+            </span>
           </motion.h2>
           <motion.p
             className="text-muted-foreground text-lg max-w-2xl mx-auto mb-6"
